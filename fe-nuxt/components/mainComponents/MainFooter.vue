@@ -1,14 +1,12 @@
-<template>
-  <MainSection></MainSection>
+<template lang="html">
+    <footer>
+        <p>footer</p>
+    </footer>
 </template>
 
 <script>
-import MainSection from '@/components/mainComponents/MainSection'
 export default {
-  component: {
-    MainSection
-  },
-  /*data() {
+    data() {
     return {
       message: 'test message',
       canSee: true,
@@ -18,6 +16,6 @@ export default {
         { id: 3, val: 'test3', fax: true },
       ],
     }
-  },*/
+  }
 }
 </script>

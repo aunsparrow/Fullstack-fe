@@ -1,14 +1,12 @@
-<template>
-  <MainSection></MainSection>
+<template lang="html">
+    <header>
+      <h1>ระบบจัดการร้านค้าขนมและเครื่องดื่ม</h1>
+    </header>
 </template>
 
 <script>
-import MainSection from '@/components/mainComponents/MainSection'
 export default {
-  component: {
-    MainSection
-  },
-  /*data() {
+  data() {
     return {
       message: 'test message',
       canSee: true,
@@ -18,6 +16,6 @@ export default {
         { id: 3, val: 'test3', fax: true },
       ],
     }
-  },*/
+  },
 }
 </script>

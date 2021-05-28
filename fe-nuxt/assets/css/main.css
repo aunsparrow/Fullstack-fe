@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    background-color: aqua;
+}
+
+.clearfix {
+    clear: both;
+}
+
+header {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    background-color: #523826;
+    margin: 0 auto;
+    text-align: center;
+}
+
+nav {
+    float: left;
+    width: 20%;
+    height: 100px;
+    /* only for demonstration, should be removed */
+    background: #ccc;
+    margin-top: 10px;
+}
+
+section {
+    float: left;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-top: 10px;
+}
+
+footer {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #523826;
+    padding: 10px;
+    height: 150px;
+    text-align: center;
+    margin-top: 10px;
+}
