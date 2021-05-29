@@ -8,4 +8,4 @@ ENV TZ=Asia/Bangkok
 COPY --from=build /bin/go_be /
 
 EXPOSE 7000 
-CMD ["/go-be"]
+CMD ["/go_be"]
