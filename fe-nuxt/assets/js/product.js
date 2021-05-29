@@ -123,15 +123,14 @@ export default {
 
         },
         async clickAddProd(button) {
-
-            console.log(this.prodUpdate.prodInfo)
-            const updateProd = await requestApi.UpdateProd(this.addProd.prodInfo)
-            this.prodUpdate.prodInfo.shop_id = ''
-            this.prodUpdate.prodInfo.category_id = ''
-            this.prodUpdate.prodInfo.product_name = ''
-            this.prodUpdate.prodInfo.product_detail = ''
-            this.prodUpdate.prodInfo.product_price = ''
-            this.prodUpdate.prodInfo.product_unit = ''
+            this.addProd.prodInfo.product_price = parseFloat(this.addProd.prodInfo.product_price)
+            const updateProd = await requestApi.AddProd(this.addProd.prodInfo)
+            this.addProd.prodInfo.shop_id = ''
+            this.addProd.prodInfo.category_id = ''
+            this.addProd.prodInfo.product_name = ''
+            this.addProd.prodInfo.product_detail = ''
+            this.addProd.prodInfo.product_price = ''
+            this.addProd.prodInfo.product_unit = ''
             this.ddCategories.name = 'เลือกหมวดหมู่'
             const getAllProd = await requestApi.getAllProd()
             this.products = getAllProd.data.data
@@ -150,6 +149,7 @@ export default {
 
         },
         async clickEditProd(even) {
+            this.prodUpdate.prod.product_price = parseFloat(this.prodUpdate.prod.product_price)
             this.prodUpdate.prod.category_id = this.addProd.prodInfo.category_id
             const updateProd = await requestApi.UpdateProd(this.prodUpdate.prod)
             this.addProd.prodInfo.category_id = ''
