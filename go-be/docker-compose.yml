@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  be_pai:
+    image: be_pai
+    restart: always
+    ports:
+      - "7000:7000"
+    environment:
+      - ENV=dev
+
+    networks:
+      - dev-api-be
+  
+networks:
+  dev-api-aed:
+
+      
