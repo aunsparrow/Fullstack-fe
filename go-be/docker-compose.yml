@@ -1,8 +1,8 @@
 version: "3.7"
 
 services:
-  be_pai:
-    image: be_pai
+  go_be:
+    image: go_be
     restart: always
     ports:
       - "7000:7000"
