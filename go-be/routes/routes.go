@@ -23,4 +23,8 @@ func SetUpRoutes(app *fiber.App) {
 	productApi.Get("/get/:product_id", controllers.GetProductById)
 	productApi.Get("/getall", controllers.GetAllProduct)
 	productApi.Get("/get/shop/:shop_id", controllers.GetAllProduct)
+
+	categoryApi := apiRoutes.Group("category")
+	categoryApi.Get("getall", controllers.GetAllCategory)
+
 }
