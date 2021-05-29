@@ -3,7 +3,6 @@
     <MainHeader />
     <Nuxt />
     <div class="clearfix"></div>
-    <MainFooter />
   </div>
 </template>
 

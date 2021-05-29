@@ -25,7 +25,7 @@ func main() {
 	dbs := db.OpenDB()
 	dbs.AutoMigrate(&dbmodels.Shops{}, &dbmodels.Categories{}, &dbmodels.Products{})
 
-	/*category := []dbmodels.Categories{
+	category := []dbmodels.Categories{
 		dbmodels.Categories{
 			CategoryName:   "เครื่องดื่มอัดลมและน้ำหวาน",
 			CategoryDetail: "test",
@@ -35,7 +35,7 @@ func main() {
 			CategoryDetail: "test",
 		},
 	}
-	dbs.Create(&category)*/
+	dbs.Create(&category)
 
 	app := fiber.New(fiber.Config{
 		BodyLimit: 25 * 1024 * 1024,

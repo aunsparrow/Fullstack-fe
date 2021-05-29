@@ -28,17 +28,20 @@ func (service *Services) CreateProduct(product *requestModels.CreateProduct) (*d
 		CategoryId:    product.CategoryId,
 		ShopId:        product.ShopId,
 	}
+
 	var categoryRepo repo.CategoryRepository
 	categoryRepo = &repo.Repository{}
 	category, err := categoryRepo.GetCategoryById(product.CategoryId)
-	if helpers.StringIsNullOrEmpty(category.CategoryId) {
+	if helpers.StringIsNullOrEmpty(category.CategoryId) || err != nil {
+		fmt.Println("asdsadasdsa")
 		return nil, nil
 	}
 
 	var shopRepo repo.ShopRepository
 	shopRepo = &repo.Repository{}
 	shop, err := shopRepo.GetShopById(product.ShopId)
-	if helpers.StringIsNullOrEmpty(shop.ShopId) {
+	if helpers.StringIsNullOrEmpty(shop.ShopId) || err != nil {
+		fmt.Println("asdsadasdsa")
 		return nil, nil
 	}
 
@@ -62,15 +65,14 @@ func (service *Services) UpdateProduct(product *requestModels.UpdateProduct) (*r
 		ProductDetail: product.ProductDetail,
 		ProductPrice:  product.ProductPrice,
 		ProductUnit:   product.ProductUnit,
-		CategoryId:    product.CategoryId,
 		UpdateAt:      &at,
 	}
 
 	var categoryRepo repo.CategoryRepository
 	categoryRepo = &repo.Repository{}
-	category, err := categoryRepo.GetCategoryById(product.CategoryId)
-	if helpers.StringIsNullOrEmpty(category.CategoryId) {
-		return nil, nil
+	catTmp, _ := categoryRepo.GetCategoryById(product.CategoryId)
+	if !helpers.StringIsNullOrEmpty(catTmp.CategoryId) {
+		model.CategoryId = catTmp.CategoryId
 	}
 
 	var productRepo repo.ProductRepository
@@ -87,6 +89,10 @@ func (service *Services) UpdateProduct(product *requestModels.UpdateProduct) (*r
 		return nil, err
 	}
 
+	if helpers.StringIsNullOrEmpty(catTmp.CategoryId) {
+		catTmp, _ = categoryRepo.GetCategoryById(updateProd.CategoryId)
+	}
+
 	response.CreateAt = updateProd.CreateAt
 	response.ProductDetail = updateProd.ProductDetail
 	response.ProductId = updateProd.ProductId
@@ -95,7 +101,7 @@ func (service *Services) UpdateProduct(product *requestModels.UpdateProduct) (*r
 	response.ProductUnit = updateProd.ProductUnit
 	response.ShopId = updateProd.ShopId
 	response.UpdateAt = updateProd.UpdateAt
-	response.Category = *category
+	response.Category = *catTmp
 	return &response, nil
 }
 

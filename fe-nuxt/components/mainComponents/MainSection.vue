@@ -1,7 +1,8 @@
 <template lang="html">
   <section>
-    <p>section</p>
     <Shop></Shop>
+    <Product></Product>
+    <MainFooter></MainFooter>
   </section>
 </template>
 
@@ -9,10 +10,12 @@
 import MainNav from '@/components/mainComponents/MainNav'
 import MainArticle from '@/components/mainComponents/MainArticle'
 import Shop from '@/components/shop/shop'
-import mainSectionJs from '/assets/js/mainSection.js'   
+import Product from '@/components/product/product'
+import mainSectionJs from '/assets/js/mainSection.js' 
+import MainFooter from '@/components/mainComponents/MainFooter'  
   export default {
      component: [
-       MainNav,MainArticle,Shop
+       MainNav,MainArticle,Shop,Product,MainFooter
        ]
   ,
     mixins: [mainSectionJs],

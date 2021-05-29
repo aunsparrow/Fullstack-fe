@@ -8,5 +8,5 @@ type Categories struct {
 	CategoryDetail string     `gorm:"type:text;" json:"category_detail"`
 	CreateAt       *time.Time `gorm:"type:timestamp;default:now()" json:"create_at"`
 	UpdateAt       *time.Time `gorm:"type:timestamp" json:"update_at"`
-	Products       []Products `gorm:"foreignKey:category_id;references:category_id" json:"products"`
+	Products       []Products `gorm:"foreignKey:category_id;references:category_id;constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"products"`
 }

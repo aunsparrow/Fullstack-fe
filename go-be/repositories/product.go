@@ -52,11 +52,7 @@ func (repo *Repository) DeleteProduct(productId string) (bool, error) {
 func (repo *Repository) GetProductById(productId string) (*dbmodels.Products, error) {
 	var model dbmodels.Products
 	dB := db.Db
-	if err := dB.Model(&dbmodels.Products{}).Where("product_id = ?", productId).First(&model).Error; err != nil {
-		fmt.Println("GetById", err)
-		return nil, err
-	}
-
+	dB.Model(&dbmodels.Products{}).Where("product_id = ?", productId).First(&model)
 	return &model, nil
 }
 
@@ -69,10 +65,7 @@ func (repo *Repository) GetAllProduct(page requestModels.Pagination) ([]dbmodels
 	var model []dbmodels.Products = make([]dbmodels.Products, 0)
 
 	dB := db.Db
-	if err := dB.Model(&dbmodels.Products{}).Where("product_name LIKE ?", "%"+page.FilterText+"%").Limit(page.PageSize).Offset(offSet).Find(&model).Error; err != nil {
-		fmt.Println("GetAllProduct", err)
-		return model, err
-	}
+	dB.Model(&dbmodels.Products{}).Where("product_name LIKE ?", "%"+page.FilterText+"%").Limit(page.PageSize).Offset(offSet).Find(&model)
 	return model, nil
 }
 
@@ -80,9 +73,8 @@ func (repo *Repository) GetProductByShopId(shopId string) ([]dbmodels.Products, 
 	var model []dbmodels.Products = make([]dbmodels.Products, 0)
 
 	dB := db.Db
-	if err := dB.Model(&dbmodels.Products{}).Where("shop_id = ?", shopId).Find(&model).Error; err != nil {
-		fmt.Println("GetAllProduct", err)
-		return model, err
-	}
+	dB.Model(&dbmodels.Products{}).Where("shop_id = ?", shopId).Find(&model)
+	fmt.Println(shopId)
+	fmt.Println(model)
 	return model, nil
 }

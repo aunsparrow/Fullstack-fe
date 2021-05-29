@@ -61,10 +61,7 @@ func (repo *Repository) DeleteShop(shopId string) (bool, error) {
 func (repo *Repository) GetShopById(shopId string) (*dbmodels.Shops, error) {
 	var model dbmodels.Shops
 	dB := db.Db
-	if err := dB.Model(&dbmodels.Shops{}).Where("shop_id = ?", shopId).First(&model).Error; err != nil {
-		fmt.Println("GetById", err)
-		return nil, err
-	}
+	dB.Model(&dbmodels.Shops{}).Where("shop_id = ?", shopId).First(&model)
 	return &model, nil
 }
 
@@ -77,9 +74,6 @@ func (repo *Repository) GetAllShop(page requestModels.Pagination) ([]dbmodels.Sh
 	var model []dbmodels.Shops = make([]dbmodels.Shops, 0)
 
 	dB := db.Db
-	if err := dB.Model(&dbmodels.Shops{}).Where("shop_name LIKE ?", "%"+page.FilterText+"%").Limit(page.PageSize).Offset(offSet).Find(&model).Error; err != nil {
-		fmt.Println("GetById", err)
-		return model, err
-	}
+	dB.Model(&dbmodels.Shops{}).Where("shop_name LIKE ?", "%"+page.FilterText+"%").Limit(page.PageSize).Offset(offSet).Find(&model)
 	return model, nil
 }

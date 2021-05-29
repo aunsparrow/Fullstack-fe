@@ -1,4 +1,5 @@
 import lodash from 'lodash'
+import * as requestApi from './shopApi'
 export default {
 
     created() {
@@ -75,7 +76,11 @@ export default {
             this.answer = 'w8'
             this.debouncedGetAnswer()
         }
-    }
+    },
+
+    async mounted() {
+        const getAllShop = await requestApi.request('GET', process.env.GETALL_SHOP_API, '', false)
+    },
 
 
 }
