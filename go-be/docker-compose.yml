@@ -13,6 +13,6 @@ services:
       - dev-api-be
   
 networks:
-  dev-api-aed:
+  dev-api-be:
 
       
